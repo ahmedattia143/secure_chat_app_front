@@ -1,9 +1,9 @@
 <div class="login-page" style="overflow: scroll">
   <div class="col-md-6">
     <div class="login-box">
-      <img src="assets/chat-illustration-2.svg"/>
+      <img src="assets/add-user.svg" width='200' height="300"/>
       <div class="login-content">
-        <h1>Create an Account</h1>
+        <h1>Sign up </h1>
         <form [formGroup]="myForm">
           <mat-form-field>
             <input formControlName="cn" matInput placeholder="User Name" required type="text"/>
@@ -44,12 +44,12 @@
     <div class="div">
       <div class="btn-group">
 
-        <button (click)="onGenerateKeyPairClick()" class="btn btn-danger"> Generate Key pair</button>
+        <button (click)="onGenerateKeyPairClick()" class="btn btn-success"> Generate Key pair</button>
         <button (cbOnSuccess)="onCopySuccess($event)" [cbContent]="cryptoService.PRIVATE_KEY_PEM"
-                class="btn btn-secondary"
+                class="btn btn-warning"
                 ngxClipboard> Copy
         </button>
-        <button (click)="onSave(cryptoService.PRIVATE_KEY_PEM,'private_key.pem')" class="btn btn-dark"> Download
+        <button (click)="onSave(cryptoService.PRIVATE_KEY_PEM,'private_key.pem')" class="btn btn-primary"> Download
         </button>
       </div>
 
@@ -68,10 +68,10 @@
       <div class="btn-group">
 
         <button (cbOnSuccess)="onCopySuccess($event)" [cbContent]="cryptoService.PUBLIC_KEY_PEM"
-                class="btn btn-secondary"
+                class="btn btn-warning"
                 ngxClipboard> Copy
         </button>
-        <button (click)="onSave(cryptoService.PRIVATE_KEY_PEM,'public_key.pem')" class="btn btn-dark"> Download
+        <button (click)="onSave(cryptoService.PRIVATE_KEY_PEM,'public_key.pem')" class="btn btn-primary"> Download
         </button>
       </div>
 
@@ -90,14 +90,14 @@
     <div class="div">
       <div class="btn-group">
         <button (click)="onGenerateCSR()" [disabled]="!cryptoService.PRIVATE_KEY_PEM || myForm.invalid"
-                class="btn btn-danger"> Generate
+                class="btn btn-success"> Generate
           CSR
         </button>
 
-        <button (cbOnSuccess)="onCopySuccess($event)" [cbContent]="cryptoService.CSR_PEM" class="btn btn-secondary"
+        <button (cbOnSuccess)="onCopySuccess($event)" [cbContent]="cryptoService.CSR_PEM" class="btn btn-warning"
                 ngxClipboard> Copy
         </button>
-        <button (click)="onSave(cryptoService.CSR_PEM,'csr.pem')" class="btn btn-dark"> Download
+        <button (click)="onSave(cryptoService.CSR_PEM,'csr.pem')" class="btn btn-primary"> Download
         </button>
       </div>
       <div class="card" style="max-height: 200px;">

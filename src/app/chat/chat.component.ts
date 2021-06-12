@@ -17,7 +17,7 @@ const listenerId = 'ChatScreenListener';
 export class ChatComponent implements OnInit, OnDestroy {
   selectedUser: User;
   messages: Message[] = [];
-
+  keyValid: boolean=false;
   users: User[] = [];
 
   constructor(
@@ -74,7 +74,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   onSendkey(key: string) {
     console.log(key);
-    this.cryptoService.loadPrivateKey(key);
+    this.keyValid = this.cryptoService.loadPrivateKey(key);
   }
 
   onSendPublickey(key: string) {

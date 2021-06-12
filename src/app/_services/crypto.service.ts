@@ -127,15 +127,15 @@ export class CryptoService {
     this._CSR_PEM = null;
   }
 
-  loadPrivateKey(key: string) {
+  loadPrivateKey(key: string):boolean {
     this._PRIVATE_KEY = pki.privateKeyFromPem(key);
     if (this._PRIVATE_KEY) {
       this.notyService.showSucessAlert('Loaded private key');
+      return true;
     } else {
       this.notyService.showErrorAlert('Private key is invalid');
+      return false;
     }
-    console.log(this._PRIVATE_KEY);
-
 
   }
 

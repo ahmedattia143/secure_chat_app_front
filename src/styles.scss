@@ -30,7 +30,7 @@ h1 {
 }
 
 .login-page {
-  @include full-bk('/assets/login-bk.svg');
+  //@include full-bk('/assets/login-bk.svg');
 
   height: 100%;
   display: flex;

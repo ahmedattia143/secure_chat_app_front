@@ -1,34 +1,76 @@
 <div class="chat-toolbar">
   <div class="logo">
-    <img src="assets/chat-logo.svg"/>
-    <span>Secure Chat Project</span>
+    <img src="assets/chat1.svg" width="20" height="20" />
+    <span>Secured Chat</span>
   </div>
   <div *ngIf="authService.currentUser" class="user-profile">
     <span>
-      Welcome, <b> {{ authService.currentUser.name }} {{ authService.currentUser.lastName }} </b>
+      Welcome!, <b> {{ authService.currentUser.name }} {{ authService.currentUser.lastName }} </b>
     </span>
     <img [src]="'../../assets/avatar.png'" height="37px" width="36px"/>
     <span style="margin-left: 30px"><button (click)="logout()" class="btn btn-outline-danger"> Logout</button></span>
   </div>
 </div>
+
+
 <div class="chat-page">
   <div class="row " style="  padding-top: 100px;width: 100%">
-    <div class="col-md-6">
 
-      <div class="chat-box">
-        <app-contacts-list (userSelected)="selectUser($event);" [messages]="messages" [users]="users">
+      <div *ngIf='keyValid===true' class="col-md-2"></div>
+      <div *ngIf='keyValid===true' class="col-md-8">
 
-        </app-contacts-list>
-        <app-messages-view
-          (sendMessage)="recieveMessage($event)"
-          [messages]="messages"
-          [selectedUser]="selectedUser"
-        ></app-messages-view>
+        <div class="chat-box">
+          <app-contacts-list (userSelected)="selectUser($event);" [messages]="messages" [users]="users">
+
+          </app-contacts-list>
+          <app-messages-view
+            (sendMessage)="recieveMessage($event)"
+            [messages]="messages"
+            [selectedUser]="selectedUser"
+          ></app-messages-view>
+        </div>
+      </div>
+      <div *ngIf='keyValid===true' class="col-md-2"></div>
+
+
+
+      <div *ngIf='!keyValid' class="col-md-6">
+        <div class="chat-box">
+          <app-contacts-list (userSelected)="selectUser($event);" [messages]="messages" [users]="users">
+
+          </app-contacts-list>
+          <app-messages-view
+            (sendMessage)="recieveMessage($event)"
+            [messages]="messages"
+            [selectedUser]="selectedUser"
+          ></app-messages-view>
+        </div>
+      </div>
+
+      <div *ngIf='!keyValid' class="col-md-6" >
+        <div class="chat-box">
+          <div class="card" style="width:100%">
+            <div class="card-header">
+              <h5>
+                Private key
+              </h5></div>
+            <div class="card-body" style="white-space: pre-wrap;">
+        <textArea placeholder="enter your private key in order to receive and send messages securely"
+                  #privatekey
+                  style="width: 100%; height: 350px">
+  </textArea>
+              <button (click)="onSendkey(privatekey.value)" class="btn btn-primary">load key</button>
+            </div>
+          </div>
+          </div>
+          </div>
+
+
       </div>
     </div>
 
 
-    <div class="col-md-6">
+    <!-- <div class="col-md-6">
       <div *ngIf="selectedUser== undefined" class="chat-box">
         <div class="card" style="width:100%">
           <div class="card-header">
@@ -65,30 +107,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <div class="col-md-6">
-      <div class="chat-box">
-        <div class="card" style="width:100%">
-          <div class="card-header">
-            <h5>
-              Private key
-            </h5></div>
-          <div class="card-body" style="white-space: pre-wrap;">
-      <textArea placeholder="enter your private key"
-                #privatekey
-                style="width: 100%; height: 350px">
-</textArea>
-            <button (click)="onSendkey(privatekey.value)" class="btn btn-primary">load key</button>
-          </div>
-        </div>
-
-
-      </div>
-    </div>
-
-
-    <div class="col-md-6">
+    <!-- <div class="col-md-6">
       <div class="chat-box">
         <div class="container" style="white-space: pre-wrap; overflow: scroll;">
           <div *ngFor="let message of filterMessagesEncrypted()" class="row" style="display:inline-block">
@@ -102,6 +123,4 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
+    </div> -->

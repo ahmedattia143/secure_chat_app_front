@@ -1,10 +1,10 @@
 <div class="login-page">
   <div class="login-box">
     <div class="login-content">
-      <h1>Welcome Back</h1>
+      <h1>LOGIN</h1>
       <form (ngSubmit)="login(formulaire)" #formulaire= "ngForm">
         <mat-form-field>
-          <input matInput placeholder="User ID" type="string" required ngModel name="cn"/>
+          <input matInput placeholder="UserName" type="string" required ngModel name="cn"/>
         </mat-form-field>
         <mat-form-field>
         <input matInput placeholder="Password" type="password" required ngModel name="password" />
@@ -16,6 +16,6 @@
         <a routerLink="/signup">Sign up</a>
       </div>
     </div>
-    <img src="assets/chat-illustration-1.svg" />
+    <img src="assets/enter.svg" width="250" height="250" />
   </div>
 </div>
